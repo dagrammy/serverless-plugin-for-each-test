@@ -1,0 +1,10 @@
+# General
+*/.idea
+.idea
+.serverless
+.gradle
+build
+node_modules
+dist
+*.iml
+

@@ -1,0 +1,22 @@
+service: serverless-plugin-for-each-test
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  region: eu-central-1
+
+custom:
+  rate:
+    - RATE_A
+    - RATE_B
+  cron:
+    - CRON_Z
+    - CRON_Y
+    - CRON_X
+
+resources:
+  - ${file(./schedule/rate.yml)}
+  - ${file(./schedule/cron.yml)}
+
+plugins:
+  - serverless-plugin-for-each

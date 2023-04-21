@@ -1,0 +1,12 @@
+Resources:
+  $forEach:
+    iterator: "${self:custom.cron}"
+    template:
+      CronSchedule$forEach.value:
+        Type: AWS::Events::Rule
+        Properties:
+          ScheduleExpression: cron(0 8 * * ? *)
+          Targets:
+            - Input: '{"scheduler":"$forEach.value"}'
+              Arn: arn:aws:lambda:eu-central-1:123456789:function:callIt
+              Id: callItId
